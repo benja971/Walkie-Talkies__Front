@@ -13,7 +13,7 @@ export default function Contact({ contact, setSearch, setTitle }) {
 		setSearch("");
 		setTitle("Your conversations");
 
-		const res = await fetch(`http://localhost:8080/api/users/${user_._id}/contacts/${contact._id}`, {
+		const res = await fetch(`http://localhost:8003/api/users/${user_._id}/contacts/${contact._id}`, {
 			method: "PUT",
 		});
 

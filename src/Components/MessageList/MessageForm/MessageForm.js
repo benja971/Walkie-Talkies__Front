@@ -6,7 +6,7 @@ import { addMessage } from "../../../reducers/messagesReducer";
 
 import "./MessageForm.scss";
 
-const ENDPOINT = "http://127.0.0.1:8080";
+const ENDPOINT = "http://127.0.0.1:8003";
 
 export default function MessageForm() {
 	const [message, setMessage] = useState("");

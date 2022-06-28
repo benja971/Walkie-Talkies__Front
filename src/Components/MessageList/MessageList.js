@@ -9,7 +9,7 @@ import Message from "./Message/Message";
 
 import "./MessageList.scss";
 
-const ENDPOINT = "http://127.0.0.1:8080";
+const ENDPOINT = "http://127.0.0.1:8003";
 
 export default function MessageList() {
 	const { messages, discussionId } = useSelector(state => state.messages);

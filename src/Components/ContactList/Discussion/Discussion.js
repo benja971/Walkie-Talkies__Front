@@ -18,7 +18,7 @@ export default function Discussion({ discusion }) {
 	const getContact = useCallback(async () => {
 		const tmp = discusion.userIds.filter(userId => userId !== user._id);
 
-		const res = await fetch(`http://localhost:8080/api/users/${tmp[0]}`);
+		const res = await fetch(`http://localhost:8003/api/users/${tmp[0]}`);
 		const data = await res.json();
 
 		if (!data) return;
