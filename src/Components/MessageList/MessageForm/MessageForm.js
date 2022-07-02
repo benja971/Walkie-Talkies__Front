@@ -1,20 +1,20 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import socketIOClient from "socket.io-client";
+import io from "socket.io-client";
 
 import { addMessage } from "../../../reducers/messagesReducer";
 
 import "./MessageForm.scss";
 
-const ENDPOINT = "http://127.0.0.1:8003";
+const url = process.env.NODE_ENV === "production" ? "https://walkie-talkies.benjamin-niddam.dev/" : "http://localhost:8003";
+
+const socket = io.connect(url);
 
 export default function MessageForm() {
 	const [message, setMessage] = useState("");
 
 	const { user } = useSelector(state => state.user);
 	const { discussionId } = useSelector(state => state.messages);
-
-	const socket = useMemo(() => socketIOClient(ENDPOINT), []);
 
 	const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ export default function MessageForm() {
 			dispatch(addMessage(messageObj));
 			setMessage("");
 		},
-		[dispatch, message, user, socket, discussionId],
+		[dispatch, message, user, discussionId],
 	);
 
 	return (

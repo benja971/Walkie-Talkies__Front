@@ -46,7 +46,7 @@ export default function Access(props) {
 
 	const manageRegister = async response => {
 		if (response.status === 204) {
-			const res = await fetch("http://localhost:8003/api/register", {
+			const res = await fetch("/api/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -76,15 +76,13 @@ export default function Access(props) {
 			password,
 		};
 
-		const response = await fetch("http://localhost:8003/api/login", {
+		const response = await fetch("/api/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(data),
 		});
-
-		console.log(response);
 
 		if (id === "login") manageLogin(response);
 		else if (id === "register") manageRegister(response);
@@ -95,7 +93,7 @@ export default function Access(props) {
 
 		if (!user) return;
 
-		fetch(`http://localhost:8003/api/users/${user}`)
+		fetch(`/api/users/${user}`)
 			.then(res => res.json())
 			.then(user => {
 				setSelfVisibility(false);

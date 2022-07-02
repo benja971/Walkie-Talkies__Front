@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import socketIOClient from "socket.io-client";
+import io from "socket.io-client";
 
 import { addMessage } from "../../reducers/messagesReducer";
 import { uniqueId } from "../../mess";
@@ -9,12 +9,12 @@ import Message from "./Message/Message";
 
 import "./MessageList.scss";
 
-const ENDPOINT = "http://127.0.0.1:8003";
+const url = process.env.NODE_ENV === "production" ? "https://walkie-talkies.benjamin-niddam.dev/" : "http://localhost:8003";
+
+const socket = io.connect(url);
 
 export default function MessageList() {
 	const { messages, discussionId } = useSelector(state => state.messages);
-
-	const socket = useMemo(() => socketIOClient(ENDPOINT), []);
 
 	const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ export default function MessageList() {
 
 			dispatch(addMessage(messageObj));
 		});
-	}, [dispatch, socket, discussionId]);
+	}, [dispatch, discussionId]);
 
 	return (
 		<div className='message-list'>

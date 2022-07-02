@@ -2,6 +2,7 @@
 	"name": "walkie-talkie--client",
 	"version": "1.0.0",
 	"private": true,
+	"proxy": "http://localhost:8003/",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.2",
 		"@testing-library/jest-dom": "^5.16.4",
@@ -16,7 +17,7 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"start:dev:client": "react-scripts start",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -42,10 +43,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/benja971/Walkie-Talkies.git"
+		"url": "git+https://github.com/benja971/Walkie-Talkies__Front.git"
 	},
 	"bugs": {
-		"url": "https://github.com/benja971/Walkie-Talkies/issues"
+		"url": "https://github.com/benja971/Walkie-Talkies__Front/issues"
 	},
-	"homepage": "https://github.com/benja971/Walkie-Talkies#readme"
+	"homepage": "https://walkie-talkies.benjamin-niddam.dev"
 }
